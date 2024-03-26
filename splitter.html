@@ -31,12 +31,12 @@
       }
       .splitter_-{
         width: auto;
-        height: 5px;
+        height: 10px;
         background-color: green;
         border: solid lightgreen;
       }
       .splitter_I{
-        width: 5px;
+        width: 10px;
         height: auto;
         background-color: red;
         border: solid lightpink;
@@ -49,7 +49,7 @@
     <div class="column">
       <div class="row">
         <div class="element">1</div>
-        <div class="splitter_I">splitter</div>
+        <div id = "dragDiv" class="splitter_I">splitter</div>
         <div class="element">2</div>
         <div class="splitter_I">splitter</div>
         <div class="element">3</div>
@@ -64,6 +64,13 @@
       </div>
       <div class="splitter_-">splitter</div>
     </div>
+
+    <script>
+      dragDiv = document.getElementById('dragDiv');
+      const splitter = new Splitter(dragDiv,1 ,0 );
+
+
+    </script>
 
   </body>
 </html>
