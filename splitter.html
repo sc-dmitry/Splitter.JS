@@ -8,19 +8,19 @@
 
     <style>
       .column, .row, .element, .splitter{
+        display: flex;
         margin: 5px;
         padding: 5px ;
 
       }
 
       .column{
-        display: flex;
+
         flex-direction: column;
         border: solid #98a91d;
       }
 
       .row{
-        display: flex;
         flex-direction: row;
         border: solid #371da9;
       }
@@ -48,13 +48,13 @@
     <!-- page content -->
     <div class="column">
       <div class="row">
-        <div class="element">1</div>
-        <div id = "dragDiv" class="splitter_I">splitter</div>
-        <div class="element">2</div>
-        <div class="splitter_I">splitter</div>
-        <div class="element">3</div>
-        <div class="splitter_I">splitter</div>
-        <div class="element">4</div>
+        <div id = "div1" class="element">1</div>
+        <div id = "divSplitter1" class="splitter_I">splitter</div>
+        <div id = "div2" class="element">2</div>
+        <div id = "divSplitter2" class="splitter_I">splitter</div>
+        <div id = "div3"class="element">3</div>
+        <div id = "divSplitter3" class="splitter_I">splitter</div>
+        <div id = "div4"class="element">4</div>
       </div>
       <div class="splitter_-">splitter</div>
       <div class="row">
@@ -66,8 +66,10 @@
     </div>
 
     <script>
-      dragDiv = document.getElementById('dragDiv');
-      const splitter = new Splitter(dragDiv,1 ,0 );
+      dragDiv = document.getElementById('divSplitter1');
+      const splitter1 = new Splitter(dragDiv);
+      splitter1.addPane(document.getElementById('div1'), 0 , 1);
+      splitter1.addPane(document.getElementById('div2'), 0 , -1);
 
 
     </script>
