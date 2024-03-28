@@ -1,3 +1,4 @@
+
 class Splitter {
   panes = [];
   isDragging = false;
@@ -13,13 +14,12 @@ class Splitter {
   getDom(arg) {
     const element = arg instanceof HTMLElement ? arg : document.getElementById(arg)
     if (element == null) console.log(`No element ${arg} found method: getDom()`);
-
     return element;
   }
 
-  addPane(arg, kx, ky) {
+  addPane = (arg, kx, ky) => {
     this.panes.push(new ResizePane(this.getDom(arg), kx, ky));
-    console.log('Num of panes: ', this.panes.length);
+    // console.log('Num of panes: ', this.panes.length);
   }
 
   startDrag = (event) => {
@@ -27,7 +27,7 @@ class Splitter {
     this.startX = event.clientX;
     this.startY = event.clientY;
 
-    console.log(this.panes.length);
+    // console.log(this.panes.length);
     for (let key in this.panes) {
       this.panes[key].saveInitSize();
     }
@@ -45,10 +45,10 @@ class Splitter {
     this.shiftX = currentX - this.startX;
     this.shiftY = currentY - this.startY;
 
-    console.log('panes num ', this.panes.length);
+    // console.log('panes num ', this.panes.length);
     for (let key in this.panes) {
       this.panes[key].updateSize(this.shiftX, this.shiftY);
-      console.log(`key ${key}`);
+
     }
   }
 
@@ -80,22 +80,25 @@ class ResizePane {
     this.saveInitSize ();
   }
 
-  saveInitSize(){
-    this.initWidth = this.pane.offsetWidth;
-    this.initHeight = this.pane.offsetHeight;
+  saveInitSize = () =>{
+    this.initWidth =  this.pane.offsetWidth;  //this.pane.clientWidth - this.pane.style.padding.top; //this.pane.offsetWidth;
+    this.initHeight =  this.pane.offsetHeight; //this.pane.style.height;// this.pane.clientHeight; //this.pane.offsetHeight;
 
-    console.log('saveInitSize size');
+
+    console.log( "<-  save Init Size w  ", this.initWidth,       "  h ", this.initHeight );
+    
+  
   }
-  updateSize(deltaX, deltaY){
+  updateSize = (deltaX, deltaY) => {
     var newWidth  = this.initWidth  + deltaX * this.kx;
-    var newHeight = this.initHeight + deltaY * this.ky;
+    var newHeight = this.initHeight;// + deltaY * this.ky;
 
     this.pane.style.width = newWidth + "px";
     this.pane.style.height = newHeight + "px";
 
-    console.log('update size');
+    console.log( "    update  Size w    ", this.pane.style.width," h  ", this.pane.style.height );
+    console.log( "                              h  ",this.pane.offsetHeight);
   }
 
 
 }
-

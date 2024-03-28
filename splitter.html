@@ -9,8 +9,8 @@
     <style>
       .column, .row, .element, .splitter{
         display: flex;
-        margin: 5px;
-        padding: 5px ;
+        margin: 10px;
+        padding: 8px ;
 
       }
 
@@ -66,10 +66,15 @@
     </div>
 
     <script>
-      dragDiv = document.getElementById('divSplitter1');
-      const splitter1 = new Splitter(dragDiv);
-      splitter1.addPane(document.getElementById('div1'), 0 , 1);
-      splitter1.addPane(document.getElementById('div2'), 0 , -1);
+
+      const splitter1 = new Splitter( document.getElementById('divSplitter1'));
+      splitter1.addPane(document.getElementById('div1'), 1 , 0);
+      splitter1.addPane(document.getElementById('div2'), -1 , 0);
+
+      const splitter2 = new Splitter(document.getElementById('divSplitter2'));
+      splitter2.addPane(document.getElementById('div2'), 1 , 0);
+      splitter2.addPane(document.getElementById('div3'), -1 , 0);
+
 
 
     </script>
